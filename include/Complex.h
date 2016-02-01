@@ -53,10 +53,10 @@ class Complex
 template<typename T>
 inline std::ostream& operator<<(std::ostream& stream, const Complex<T>& c)
 {
-    cout << c.GetReal();
+    stream << c.GetReal();
     if (c.GetImaginary() >= 0)
-        cout << '+';
-    cout << c.GetImaginary() << 'i';
+        stream << '+';
+    stream << c.GetImaginary() << 'i';
 
     return stream;
 }
@@ -66,7 +66,7 @@ inline std::istream& operator>>(std::istream& stream, Complex<T>& c)
 {
     T re, im;
     char sign, i;
-    cin >> re >> sign >> im >> i;
+    stream >> re >> sign >> im >> i;
 
     if ((sign != '-' && sign != '+') || i != 'i')
     {
@@ -325,6 +325,24 @@ inline Complex<T> operator--(Complex<T>& c, int)
     Complex<T> tmp(c);
     --c;
     return tmp;
+}
+
+template<typename T>
+inline Complex<T> operator-(const Complex<T>& c)
+{
+    Complex<T> res;
+    res.SetReal(-c.GetReal());
+    res.SetImaginary(-c.GetImaginary());
+
+    return res;
+}
+
+template<typename T>
+inline Complex<T> operator+(const Complex<T>& c)
+{
+    Complex<T> res(c);
+
+    return res;
 }
 
 
