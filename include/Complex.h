@@ -1,8 +1,6 @@
 #ifndef PHILIB_COMPLEX
 #define PHILIB_COMPLEX
 
-#include <iostream>
-
 template<typename T>
 class Complex
 {
@@ -40,6 +38,11 @@ class Complex
         {
             re = c.GetReal();
             im = c.GetImaginary();
+        }
+
+        inline T abs(void) const
+        {
+            return (sqrt(re * re + im * im));
         }
 
     private:
